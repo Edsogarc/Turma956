@@ -51,12 +51,12 @@ namespace APIPessoa.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public ActionResult<Pessoa> Inserir([FromBody] Pessoa pessoa)
         {
-            //if (!ModelState.IsValid)
+            // if (!ModelState.IsValid)
             //{
-            //    return BadRequest();
+            //     return BadRequest();
             //}
-
-            pessoas.Add(pessoa);
+            PessoaRepository repository = new();
+            repository.InserirPessoas(pessoa);
             return CreatedAtAction(nameof(ConsultarPessoa), pessoa);
         }
 
